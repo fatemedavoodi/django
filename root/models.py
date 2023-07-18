@@ -8,5 +8,8 @@ class Services(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=False)
 
+    class Meta:
+        ordering = ['-created_date'][:3]
+
     def __str__(self):
         return self.title

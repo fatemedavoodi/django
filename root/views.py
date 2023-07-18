@@ -4,9 +4,9 @@ from .models import Services
 
 app_name = 'root'
 def home(request):
-    services = Services.objects.all()
+    services = Services.objects.filter(status=True)
     context={
-        'service':Services
+        'service':services
     }
     return render(request,"root/index.html",context=context)
 
