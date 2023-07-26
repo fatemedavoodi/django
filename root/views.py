@@ -1,12 +1,18 @@
 from django.shortcuts import render
 from .models import Services
+from courses.models import Course,Trainer
 
 
-app_name = 'root'
+
 def home(request):
     services = Services.objects.filter(status=True)
+    last_three_course = Course.objects.filter(status=True)
+    last_three_trainer = Trainer.objects.filter(status=True)
+
     context={
-        'service':services
+        'service':services,
+        'course':last_three_course,
+        'trainer':last_three_trainer,
     }
     return render(request,"root/index.html",context=context)
 

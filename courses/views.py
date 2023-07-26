@@ -2,8 +2,10 @@ from django.shortcuts import render
 from .models import Course
 
 
+
 def courses(request):
-    course = Course.objects.all()
+    course = Course.objects.filter(status=True)
+
     context = {
         'courses':course
     }
