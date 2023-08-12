@@ -15,7 +15,7 @@
       </div>
     </div><!-- End Breadcrumbs --><br>
     <div class="single-sidebar-widget search-widget" align="center">
-      <form class="search-form" action="#">
+      <form class="search-form" action={% url 'courses:course_search' %}>
           <input placeholder="Search Posts" name="search" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
           <button type="submit">click</button>
       </form>
@@ -63,13 +63,23 @@
       </div>
     </section><!-- End Courses Section -->
     <div align="center" style="font-size:35px;">
-      <a href="#"><<</a>
-      <a href="#">....</a>
-      <a href="#"><  </a>
-      <a href="#">....</a>
-      <a href="#">></a>
-      <a href="#">....</a>
-      <a href="#">>></a>
+      {% if courses.has_next and courses.has_previous %}
+      <a href="?page={{first_page}}"><<</a>
+      <a href="#" >{{courses.previous_page_number}}</a>
+      <a href="?page={{courses.previous_page_number}}"><  </a>
+      <a href="#" ><active>{{courses.number}}</a>
+      <a href="?page={{courses.next_page_number}}">></a>
+      <a href="#">{{courses.next_page_number}}</a>
+      <a href="?page={{last_page}}">>></a>
+      {% elif courses.has_next %}
+      <a href="?page={{courses.next_page_number}}">></a>
+      <a href="#">{{courses.number}}</a>
+      <a href="?page={{last_page}}">>></a>
+      {% elif courses.has_previous %}
+      <a href="?page={{first_page}}"><<</a>
+      <a href="#">{{courses.number}}</a>
+      <a href="?page={{courses.previous_page_number}}"><  </a>
+      {% endif %}
     </div>
 
   </main><!-- End #main -->
