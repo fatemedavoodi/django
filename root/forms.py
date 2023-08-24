@@ -1,4 +1,18 @@
 from django import forms
+from .models import NewsLetter,ContactUs
 
-class NewsletterForm(forms.Form):
-    email = forms.EmailField()
+
+class NewsletterForm(forms.ModelForm):
+    
+    class Meta:
+        model = NewsLetter
+        fields = ['email']
+
+
+class ContactUsForm(forms.ModelForm):
+    
+    class Meta:
+        model = ContactUs
+        fields = ['name','email','subject','message']
+
+

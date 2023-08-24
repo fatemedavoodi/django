@@ -44,7 +44,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="{% url 'root:home' %}">Mentor</a></h1>
+      <h1 class="logo me-auto" style='font-size:30'><a href="{% url 'root:home' %}" style='color:blue'>آکادمی</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="{% url 'root:home' %}" class="logo me-auto"><img src="{% static 'assets/img/logo.png' %}" alt="" class="img-fluid"></a>-->
 
@@ -125,7 +125,7 @@
                   <p style='color:green'>{{message}}</p>
                   {% endfor %}
                 {% endif %}
-                <form action={% url 'root:home' %} method="post">
+                <form method="post">
                   {% csrf_token %}
                   <input type="email" name="email"><input type="submit" value="Subscribe">
                 </form>
