@@ -63,8 +63,13 @@
 
             </ul>
           </li>
+          {% if request.user.is_authenticated %}
+          <li><a href="#">Logout</a></li>
+          <li><a href="#">change password</a></li>
+          {% else %}
           <li><a href="#">Login</a></li>
-          <li><a href="#">Signup</a></li>
+          <li><a href="#">signup</a></li>
+          {% endif %}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
